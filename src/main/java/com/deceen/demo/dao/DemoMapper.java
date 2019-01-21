@@ -1,6 +1,7 @@
 package com.deceen.demo.dao;
 
 import com.deceen.demo.entity.DemoEntity;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -15,4 +16,5 @@ public interface DemoMapper {
 
     List<DemoEntity> getUser();
 
+    void register(@Param("username") String username,@Param("password") String password);
 }

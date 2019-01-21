@@ -13,4 +13,5 @@ public interface DemoService {
 
     List<DemoEntity> getUser();
 
+    void register(String username, String password);
 }

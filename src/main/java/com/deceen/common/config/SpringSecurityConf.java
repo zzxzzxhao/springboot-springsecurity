@@ -60,7 +60,8 @@ public class SpringSecurityConf extends WebSecurityConfigurerAdapter {
 
                 .and()
                 .authorizeRequests()//定义哪些URL需要被保护、哪些不需要被保护
-
+                .antMatchers("/test/register")//允许匿名注册
+                .permitAll()
                 .anyRequest()//任何请求,登录后可以访问
                 .access("@rbacauthorityservice.hasPermission(request,authentication)") // RBAC 动态 url 认证
 
@@ -76,7 +77,8 @@ public class SpringSecurityConf extends WebSecurityConfigurerAdapter {
                 .logout()//默认注销行为为logout
                 .logoutUrl("/logout")
                 .logoutSuccessHandler(logoutSuccessHandler)
-                .permitAll();
+                .permitAll()
+        ;
 
         // 记住我
         http.rememberMe().rememberMeParameter("remember-me")
